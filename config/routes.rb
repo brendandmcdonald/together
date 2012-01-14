@@ -1,5 +1,7 @@
 Together::Application.routes.draw do
-  resources :subscribers
+  resources :subscribers do
+    get 'notify_all', :on => :collection
+  end
 
   get "welcome/home"
 

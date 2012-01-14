@@ -1,5 +1,6 @@
 class SubscribersController < ApplicationController
   before_filter :authenticate_admin_access
+  layout 'welcome'
   # GET /subscribers
   # GET /subscribers.json
   def index
@@ -76,5 +77,13 @@ class SubscribersController < ApplicationController
       format.html { redirect_to subscribers_url }
       format.json { head :ok }
     end
+  end
+
+  def notify_all
+    @subscribers = Subscriber.all
+    @subscribers.each do |user|
+         UserMailer.notify_all_user(user).deliver
+    end
+    redirect_to root_path
   end
 end
