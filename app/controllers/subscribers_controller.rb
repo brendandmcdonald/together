@@ -43,6 +43,7 @@ class SubscribersController < ApplicationController
   def create
     @subscriber = Subscriber.new(params[:subscriber])
       if @subscriber.save
+         UserMailer.subscribing_user(@subscriber).deliver
         respond_to do |f|
           f.js
         end
