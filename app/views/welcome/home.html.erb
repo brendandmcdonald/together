@@ -1,0 +1,60 @@
+<div class="row error" style="display: none;">
+  <p style="font-size: 20px; color: #fefefe; background-color: #ff0000; line-height: 35px; text-align: center;  -moz-border-radius: 8px;
+          -ms-border-radius: 8px;
+          -o-border-radius: 8px;
+          -webkit-border-radius: 8px; ">Please provide valid email address</p>
+   <div class="clear1"></div>
+</div>
+
+<div id="notice">
+  <div id="light" class="white_content">
+    <div class="user-notice">
+      <div class="clear1"></div>
+      <p style="font-size: 20px; text-align: center; line-height: 30px">Thank you for subscribing, an email has been sent to your email
+        address</p>
+
+      <div class="clear1"></div>
+      <p style="font-size: 20px; text-align: center; "><a href="#" class="btn" id="ok-lb">Ok</a></p>
+    </div>
+  </div>
+  <div id="fade" class="black_overlay"></div>
+</div>
+
+<p style="font-size: 30px; text-align: center;"><a class="TogetherText" href="/">Together.</a></p>
+
+<p style="font-size: 20px"> Description of service.</p>
+<h5>Please subscribe your email address, we will confirm you soon we launch our site </h5>
+<div class="clear1"></div>
+<%= image_tag('ajax_spinner.gif', :id => 'ajax_spinner', :style => 'display: none') %>
+<div class="clear1"></div>
+<div class="email-form">
+  <%= form_for(@subscriber, :remote => true) do |f| %>
+      <%= f.label :email, :class => 'label warning', :style => "height: 24px;" %> &nbsp; &nbsp;
+      <%= f.text_field :email, :class => 'xlarge' %>
+      <br/>
+
+      <div class="clear1"></div>
+      <div class="submit-button-box">
+        <%= f.submit 'Subscribe', :disable_with => 'Subscribing..', :class => 'btn' %>
+      </div>
+  <% end %>
+</div>
+
+<div class="footer" style="margin-top: 60px; text-align: center;">Copyright &copy; 2012 Together, Inc.
+  All rights reserved.
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("a#ok-lb").click(function() {
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $('#new_subscriber').submit(function() {
+        $('#ajax_spinner').show();
+    });
+</script>

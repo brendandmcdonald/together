@@ -1,0 +1,10 @@
+<% if @subscriber.errors.any? -%>
+$("#ajax_spinner").hide();
+$(".error").show();
+$(":input:not(input[type=submit])").val("");
+<% else -%>
+document.getElementById('light').style.display = 'block';document.getElementById('fade').style.display = 'block';
+$("#ajax_spinner").hide(300);
+$("#notice").show(300);
+$(":input:not(input[type=submit])").val("");
+<% end -%>
